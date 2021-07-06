@@ -1,0 +1,90 @@
+@page
+@model NorthwindWeb.Pages.CustomerDetailModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1 class="display-2">Customer Detail</h1>
+
+<div class="row">
+    <div class="col-md-6 h5">Company Name</div>
+    <div class="col-md-6">@Model.Customer.CompanyName</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Contact Name</div>
+    <div class="col-md-6">@Model.Customer.ContactName</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Contact Title</div>
+    <div class="col-md-6">@Model.Customer.ContactTitle</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Address</div>
+    <div class="col-md-6">@Model.Customer.Address</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">City</div>
+    <div class="col-md-6">@Model.Customer.City</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Region</div>
+    <div class="col-md-6">@Model.Customer.Region</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Postal Code</div>
+    <div class="col-md-6">@Model.Customer.PostalCode</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Country</div>
+    <div class="col-md-6">@Model.Customer.Country</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Phone</div>
+    <div class="col-md-6">@Model.Customer.Phone</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 h5">Fax</div>
+    <div class="col-md-6">@Model.Customer.Fax</div>
+</div>
+
+@if (Model.Orders.Count() == 0)
+{
+    <p><strong>The customer has no orders!</strong></p>
+}
+else
+{
+ <div class="row">
+    <h1 class="display-4">Orders</h1>
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Order ID</th>
+                <th>Employee ID</th>
+                <th>Order Date</th>
+                <th>Required Date</th>
+                <th>Shipped Date</th>
+                <th>Freight</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>@order.EmployeeID</td>
+                    <td>@order.OrderDate</td>
+                    <td>@order.RequiredDate</td>
+                    <td>@order.ShippedDate</td>
+                    <td>@order.Freight</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>   
+}
